@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.swaptext.js"></script>
+    <title>jQuery swaptext plugin</title>
+
+    <style type="text/css">
+        .full-text {display: none;}
+        .small-text, .full-text {width: 400px; padding: 5px; border:1px #e2e2e2 solid;}
+    </style>
+
+</head>
+<body>
+
+<div class="parent">
+    #1
+    <div class="small-text">
+        small text small text small text small text small text small text small text small text
+        small text small text small text small text small text small text small text small text
+        small text small text small text small text small text small text small text small text
+    </div>
+
+    <div class="full-text">
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+    </div>
+
+    <a class="more" href="#">more...</a>
+</div>
+
+
+<div class="parent">
+    #2
+    <div class="small-text">
+        small text small text small text small text small text small text small text small text
+        small text small text small text small text small text small text small text small text
+        small text small text small text small text small text small text small text small text
+    </div>
+
+    <div class="full-text">
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+        full text full text full text full text full text full text full text full text
+    </div>
+
+    <a class="more" href="#">more...</a>
+</div>
+
+
+
+
+<script type="text/javascript">
+    $().ready(function(){
+        $('.more').swaptext({
+            'firstTextClass' : '.small-text',
+            'secondTextClass' : '.full-text'
+        });
+    });
+</script>
+
+</body>
+</html>
