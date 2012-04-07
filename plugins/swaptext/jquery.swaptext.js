@@ -5,9 +5,10 @@
  * Swaps the text blocks. Used to click "more".
  * */
 
-'use strict';
 
 (function($){
+
+'use strict';
 
     $.fn.swaptext = function(settings){
 
