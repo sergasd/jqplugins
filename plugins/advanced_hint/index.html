@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>jQuery advanced hint plugin</title>
+    <script type="text/javascript" src="../../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.advanced_hint.js"></script>
+
+    <style type="text/css">
+        .container {position: relative; border: 1px #ccc solid; margin:20px 5px; padding: 5px;}
+        .advanced_hint {background: #eee; opacity: 0.8;}
+        .advanced_hint span {text-decoration: underline; cursor: pointer;}
+
+        input[type='text'] {height: 20px; width: 300px; padding: 5px; border: 1px black solid;}
+        textarea {height: 200px; width: 300px; padding: 5px; border: 1px black solid;}
+
+        .my_custom_hint {background: #abc;}
+
+        .states {border:1px #ccc solid; position: absolute; height: 200px; width: 300px; top: 25px; left: 450px; padding: 5px;}
+
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    #1 simple hint <br />
+
+    <label for="input_simple">Input simple</label>
+    <input autocomplete="off" type="text" id="input_simple" />
+
+</div>
+
+<div class="container">
+    #2 simple hint with sample <br />
+
+    <label for="input_sample">Input sample</label>
+    <input autocomplete="off" type="text" id="input_sample" />
+
+</div>
+
+<div class="container">
+    #3 custom hint <br />
+
+    <label for="input_custom">Input custom</label>
+    <input autocomplete="off" type="text" id="input_custom" />
+
+</div>
+
+
+<div class="container">
+    #4 many states <br />
+
+    <label for="input_many_states">Input many states</label>
+    <textarea autocomplete="off" rows="10" cols="40" id="input_many_states"></textarea>
+
+    <div class="states">
+        <input type="radio" name="radio" id="radio1" />
+        <label for="radio1">radio1</label>
+
+        <input type="radio" name="radio" id="radio2" checked="checked" />
+        <label for="radio2">radio2</label>
+
+        <br />
+
+        <label for="select_state">select</label>
+        <select name="select" id="select_state">
+            <option value="one">option one</option>
+            <option value="two">option two</option>
+            <option value="three">option three</option>
+        </select>
+
+        <br />
+
+        <label for="select_state_callback">select</label>
+        <select name="select" id="select_state_callback">
+            <option value="one">option one</option>
+            <option value="two">option two(set this option for callback)</option>
+            <option value="three">option three</option>
+        </select>
+
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    (function($){
+        $().ready(function(){
+            $('#input_simple').advancedHint('simple hint');
+
+            $('#input_sample').advancedHint('simple hint with <span>SAMPLE</span>');
+
+            $('#input_custom').advancedHint({
+                'hint_class' : 'my_custom_hint',
+                'show_callback' : function(el){
+                    el.css('width' , '0').show().animate({'width' : '310px'}, 200);
+                },
+                'hide_callback' : function(el){
+                    el.animate({'width' : '0'}, 200, function(){
+                        el.hide();
+                    });
+                }
+            });
+
+            $('#input_many_states').advancedHint({
+                'default_state' : 'two',
+                'states' : {
+                    'one' : {
+                        'selector' : '#radio1',
+                        'hint_text' : 'state "one" text'
+                    },
+                    'two' : {
+                        'selector' : '#radio2',
+                        'hint_text' : 'state <span>"two"</span> text'
+                    },
+                    'three' : {
+                        'selector' : '#select_state',
+                        'event' : 'change',
+                        'callback' : function(el){
+                            return $('#select_state_callback').val() == 'two';
+                        },
+                        'hint_text' : 'state "three"   text'
+                    }
+                }
+            });
+
+        });
+    })(jQuery);
+</script>
+</body>
+</html>
